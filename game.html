@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTIS 255 Project - Zeynep Aygün & Alya Akan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div id="cover-page" class="screen">
+        <div class="cover-content">
+            <h1 class="project-title">CTIS 255 PROJECT</h1>
+            <h2 class="game-title">Tap The Black GAME </h2>
+            <div class="team-section">
+                <div class="team-members">
+                    <div class="member-card">
+                        <div class="img-frame"><img src="./zeynep.jpeg" alt="Zeynep"></div>
+                        <p class="member-name">Zeynep Aygün</p>
+                        <p class="member-id">ID: 22303719</p>
+                        <p class="member-section">Section 03</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="img-frame"><img src="./alya.jpeg" alt="Alya"></div>
+                        <p class="member-name">Alya Akan</p>
+                        <p class="member-id">ID: 22403724</p>
+                        <p class="member-section">Section 03</p>
+                    </div>
+                </div>
+            </div>
+            <p class="start-message blink">Tap anywhere to start!</p>
+        </div>
+    </div>
+
+    <div id="countdown-screen" class="screen hidden">
+        <h2 id="countdown-text">3</h2>
+    </div>
+
+    <div id="game-screen" class="screen hidden">
+        <div class="game-container">
+            <header class="game-header">
+                <div class="stat-box"><span class="label">HI-SCORE</span><span id="hi-score" class="value">0</span></div>
+                <div class="stat-box main"><span class="label">SCORE</span><span id="current-score">0</span></div>
+                <div class="stat-box"><span class="label">TIME</span><span id="timer">10</span></div>
+            </header>
+
+            <div id="grid-wrapper">
+                <p id="game-instruction" class="instruction-overlay">Tap the black tiles!</p>
+                <div id="result-overlay" class="result-overlay hidden">
+                    <h1 id="status-message"></h1>
+                </div>
+                <div id="grid-container"></div>
+            </div>
+
+            <p id="f5-msg" class="f5-msg hidden">F5 to play again!!!!</p>
+
+            <div id="point-bar-container">
+                <div id="point-bar"></div>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+
+html, body { height: 100%; width: 100%; } 
+
+body {
+    background-color: #F8C8DC; 
+    color: #2c3e50;
+    overflow: hidden;/* overflow used to prevent scroling here */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.screen { /* absolute positioning to let screens stack on top of each other */
+    position: absolute; width: 100%; height: 100%; 
+    display: flex; flex-direction: column; 
+    align-items: center; justify-content: center; 
+}
+
+/* show & hide screens */
+.hidden { display: none; }
+.result-overlay.hidden { display: none; }
+.f5-msg.hidden { display: none; }
+
+
+.game-container {
+    width: 350px; 
+    display: flex; flex-direction: column; align-items: center;
+}
+
+.game-header { 
+    display: flex; justify-content: space-between; width: 100%;
+    background: rgba(255, 255, 255, 0.5); padding: 15px; border-radius: 15px; 
+    margin-bottom: 25px; 
+}
+
+/* stats(score,timer) layout */
+.stat-box { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.stat-box .label { font-size: 0.65rem; color: #5d6d7e; font-weight: 700; }
+#hi-score, #current-score, #timer { font-size: 1.3rem; font-weight: 700; }
+
+/* for the grid layout */
+#grid-wrapper { position: relative; width: 320px; height: 320px; }
+
+#grid-container {
+    display: grid; 
+    grid-template-columns: 25% 25% 25% 25%; 
+    grid-template-rows: 25% 25% 25% 25%;
+    gap: 0; 
+    width: 100%; height: 100%;
+    padding: 12px; 
+    border-radius: 20px; 
+}
+
+/* centering using absolute pos and transform */
+.instruction-overlay, .result-overlay {
+    position: absolute; top: 50%; left: 50%; 
+    transform: translate(-50%, -50%); z-index: 20; 
+    width: 100%; text-align: center;
+}
+
+.instruction-overlay {
+    font-size: 1.4rem; font-weight: bold; color: #f1c40f;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.3);/* added to give a glow effect */
+}
+
+#status-message {
+    font-size: 2.2rem; text-transform: uppercase;
+    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(241, 196, 15, 0.7);
+    color: #e74c3c;
+}
+
+/* refresh message layout */
+.f5-msg { 
+    width: 100%;
+    text-align: center;
+    margin-top: 50px; 
+    animation: pulse 1s infinite; /* for the pulsing effect */
+    color: #3498db; 
+    font-weight: bold; 
+    font-size: 1.2rem; 
+}
+
+
+#point-bar-container { 
+    width: 100%; height: 10px; 
+    background: rgba(255, 255, 255, 0.5); border-radius: 10px; 
+    overflow: hidden; 
+    margin-top: 40px; 
+}
+
+#point-bar { 
+    width: 100%; height: 100%; background-color: #2ecc71; 
+    transition: width 0.1s linear; /* smooth shrink and grow for green bar filling container */
+}
+
+/* make tiles clickable */
+.tile {
+    background: white; border-radius: 10px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; color: #2c3e50; font-size: 1.2rem;
+    transition: opacity 0.8s; /* fade when opacity changes */
+    margin: 5px;
+}
+
+.tile.black {
+    background-color: #2c3e50; color: white;
+    animation: graduallyAppear 0.8s forwards; /* appears with animation */
+}
+
+@keyframes graduallyAppear {
+    from { opacity: 0; transform: scale(0.5); } 
+    to { opacity: 1; transform: scale(1); }
+}
+
+.tile.green-feedback { background-color: #2ecc71; color: white; }/* for tbhe correct clicking feedback */
+.tile.fade-out { opacity: 0; }
+
+/* for the team member cards layout */
+.member-card { background: rgba(255, 255, 255, 0.4); padding: 10px; border-radius: 15px; margin: 10px; }
+.member-section { font-size: 0.8rem; color: #5d6d7e; margin-top: 2px; }
+.img-frame { /* circular image frame */
+    width: 80px; 
+    height: 80px; 
+    border-radius: 50%; 
+    overflow: hidden; border: 3px solid #2c3e50;
+     margin: 0 auto 5px; }
+.img-frame img { width: 100%; height: 100%; }/* makes the image fill the frame */
+
+/* animations */
+.blink { animation: blinker 1s infinite; }/* blinking effect */
+@keyframes blinker { 50% { opacity: 0.3; } }
+@keyframes pulse { 50% { transform: scale(1.1); } }/* pulsing effect */
